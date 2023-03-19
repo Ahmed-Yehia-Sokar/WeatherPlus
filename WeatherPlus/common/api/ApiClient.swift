@@ -21,21 +21,22 @@ class ApiClient {
                        method: method,
                        parameters: parameters,
                        headers: headers)
-                .responseDecodable(decoder: decoder) { (response: DataResponse<T, AFError>) in
-                    switch response.result {
-                    case .success(let value):
-                        promise(.success(value))
-                    case .failure(let error):
-                        let apiException = self.getApiException(error)
-                        promise(.failure(apiException as! E))
-                    }
+            .validate()
+            .responseDecodable(decoder: decoder) { (response: DataResponse<T, AFError>) in
+                switch response.result {
+                case .success(let value):
+                    promise(.success(value))
+                case .failure(_):
+                    let apiException = self.getApiException(response.error)
+                    promise(.failure(apiException as! E))
                 }
+            }
         }
     }
     
     // MARK: - private methods.
-    private func getApiException(_ error: AFError) -> ApiException {
-        let statusCode = ApiStatusCode(rawValue: error.responseCode ?? -1)
+    private func getApiException(_ error: AFError?) -> ApiException {
+        let statusCode = ApiStatusCode(rawValue: error?.responseCode ?? -1)
         return ApiException(statusCode: statusCode, description: statusCode?.description)
     }
 }
