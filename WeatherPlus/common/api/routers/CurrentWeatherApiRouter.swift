@@ -9,7 +9,8 @@ import Foundation
 import Alamofire
 
 enum CurrentWeatherApiRouter: ApiRouterContract {
-    case getWeatherByCityName(cityName: String)
+    case getWeatherByCityName(cityName: String,
+                              temperatureUnit: String)
     
     var headers: HTTPHeaders? {
         return ApiConstants.defaultHeaders
@@ -31,14 +32,17 @@ enum CurrentWeatherApiRouter: ApiRouterContract {
     
     var parameters: Parameters? {
         switch self {
-        case .getWeatherByCityName(let cityName):
-            return getWeatherByCityNameParameters(cityName: cityName)
+        case .getWeatherByCityName(let cityName,
+                                   let temperatureUnit):
+            return getWeatherByCityNameParameters(cityName: cityName,
+                                                  temperatureUnit: temperatureUnit)
         }
     }
 }
 
 extension CurrentWeatherApiRouter {
-    private func getWeatherByCityNameParameters(cityName: String) -> Parameters? {
+    private func getWeatherByCityNameParameters(cityName: String,
+                                                temperatureUnit: String) -> Parameters? {
         var parameters = ApiConstants.defaultParameters
         parameters["q"] = cityName
         return parameters

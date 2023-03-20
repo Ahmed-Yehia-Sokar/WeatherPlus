@@ -9,5 +9,6 @@ import Foundation
 import Combine
 
 protocol CurrentWeatherServicesContract {
-    func getCityWeather(byCityName cityName: String) -> Future<WeatherResponse, Error>
+    func getCityWeather(byCityName cityName: String,
+                        temperatureUnit: String) -> Future<WeatherResponse, Error>
 }

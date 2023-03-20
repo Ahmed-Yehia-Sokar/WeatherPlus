@@ -17,8 +17,10 @@ class CurrentWeatherServices: CurrentWeatherServicesContract {
         self.apiClient = apiClient
     }
     
-    func getCityWeather(byCityName cityName: String) -> Future<WeatherResponse, Error> {
-        let getCityWeatherApi = CurrentWeatherApiRouter.getWeatherByCityName(cityName: cityName)
+    func getCityWeather(byCityName cityName: String,
+                        temperatureUnit: String) -> Future<WeatherResponse, Error> {
+        let getCityWeatherApi = CurrentWeatherApiRouter.getWeatherByCityName(cityName: cityName,
+                                                                             temperatureUnit: temperatureUnit)
         return apiClient.performRequest(url: getCityWeatherApi.path,
                                         headers: getCityWeatherApi.headers,
                                         method: getCityWeatherApi.method,

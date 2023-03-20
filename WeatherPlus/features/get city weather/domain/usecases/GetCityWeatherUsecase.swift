@@ -18,6 +18,7 @@ class GetCityWeatherUsecase: GetCityWeatherUsecaseContract {
     }
     
     func getCityWeather(byCityName cityName: String) -> Future<WeatherResponse, Error> {
-        currentWeatherServices.getCityWeather(byCityName: cityName)
+        currentWeatherServices.getCityWeather(byCityName: cityName,
+                                              temperatureUnit: TemperatureUnits.fahrenheit.rawValue)
     }
 }
