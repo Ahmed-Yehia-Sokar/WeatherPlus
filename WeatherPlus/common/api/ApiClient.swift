@@ -11,7 +11,7 @@ import Combine
 
 class ApiClient {
     // MARK: - public methods.
-    func performRequest<T: Decodable, E: ApiException>(url: String,
+    func performRequest<T: Decodable, E: Error>(url: String,
                                                        headers: HTTPHeaders? = nil,
                                                        method: HTTPMethod,
                                                        parameters: Parameters? = nil,

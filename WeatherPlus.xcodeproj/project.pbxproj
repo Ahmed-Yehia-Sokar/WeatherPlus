@@ -26,6 +26,9 @@
 		84B2378729C8499A006F3E17 /* CurrentWeatherServicesContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2378629C8499A006F3E17 /* CurrentWeatherServicesContract.swift */; };
 		84B2378B29C84B37006F3E17 /* CurrentWeatherServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2378A29C84B37006F3E17 /* CurrentWeatherServices.swift */; };
 		84B2378F29C84EAA006F3E17 /* CurrentWeatherServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2378E29C84EAA006F3E17 /* CurrentWeatherServicesProvider.swift */; };
+		84B2379229C85E90006F3E17 /* GetCityWeatherUsecaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2379129C85E90006F3E17 /* GetCityWeatherUsecaseContract.swift */; };
+		84B2379529C86A38006F3E17 /* GetCityWeatherUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2379429C86A38006F3E17 /* GetCityWeatherUsecase.swift */; };
+		84B2379829C86AAC006F3E17 /* GetCityWeatherUsecaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2379729C86AAC006F3E17 /* GetCityWeatherUsecaseProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		84B2378629C8499A006F3E17 /* CurrentWeatherServicesContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherServicesContract.swift; sourceTree = "<group>"; };
 		84B2378A29C84B37006F3E17 /* CurrentWeatherServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherServices.swift; sourceTree = "<group>"; };
 		84B2378E29C84EAA006F3E17 /* CurrentWeatherServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherServicesProvider.swift; sourceTree = "<group>"; };
+		84B2379129C85E90006F3E17 /* GetCityWeatherUsecaseContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCityWeatherUsecaseContract.swift; sourceTree = "<group>"; };
+		84B2379429C86A38006F3E17 /* GetCityWeatherUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCityWeatherUsecase.swift; sourceTree = "<group>"; };
+		84B2379729C86AAC006F3E17 /* GetCityWeatherUsecaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCityWeatherUsecaseProvider.swift; sourceTree = "<group>"; };
 		A186E954240F69077CFFEA11 /* Pods-WeatherPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherPlus.debug.xcconfig"; path = "Target Support Files/Pods-WeatherPlus/Pods-WeatherPlus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +144,7 @@
 			children = (
 				84B2378429C84758006F3E17 /* contracts */,
 				844697B429C684A3004EF8E9 /* entities */,
+				84B2379329C86958006F3E17 /* usecases */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -194,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				84B2378529C8476D006F3E17 /* services contracts */,
+				84B2379029C85C10006F3E17 /* usecases contracts */,
 			);
 			path = contracts;
 			sourceTree = "<group>";
@@ -226,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				84B2378D29C84E88006F3E17 /* services providers */,
+				84B2379629C86A87006F3E17 /* usecases providers */,
 			);
 			path = dependencies;
 			sourceTree = "<group>";
@@ -236,6 +245,30 @@
 				84B2378E29C84EAA006F3E17 /* CurrentWeatherServicesProvider.swift */,
 			);
 			path = "services providers";
+			sourceTree = "<group>";
+		};
+		84B2379029C85C10006F3E17 /* usecases contracts */ = {
+			isa = PBXGroup;
+			children = (
+				84B2379129C85E90006F3E17 /* GetCityWeatherUsecaseContract.swift */,
+			);
+			path = "usecases contracts";
+			sourceTree = "<group>";
+		};
+		84B2379329C86958006F3E17 /* usecases */ = {
+			isa = PBXGroup;
+			children = (
+				84B2379429C86A38006F3E17 /* GetCityWeatherUsecase.swift */,
+			);
+			path = usecases;
+			sourceTree = "<group>";
+		};
+		84B2379629C86A87006F3E17 /* usecases providers */ = {
+			isa = PBXGroup;
+			children = (
+				84B2379729C86AAC006F3E17 /* GetCityWeatherUsecaseProvider.swift */,
+			);
+			path = "usecases providers";
 			sourceTree = "<group>";
 		};
 		A33A4863BC330FE420FB40BD /* Pods */ = {
@@ -374,6 +407,7 @@
 				846104BA29C7A4BB00CE1AEF /* ApiConstants.swift in Sources */,
 				84B2378B29C84B37006F3E17 /* CurrentWeatherServices.swift in Sources */,
 				84B2378729C8499A006F3E17 /* CurrentWeatherServicesContract.swift in Sources */,
+				84B2379529C86A38006F3E17 /* GetCityWeatherUsecase.swift in Sources */,
 				846104B629C7A32600CE1AEF /* ContentType.swift in Sources */,
 				846104C529C7ACBA00CE1AEF /* ApiStatusCode.swift in Sources */,
 				846104BF29C7A71500CE1AEF /* CurrentWeatherApiRouter.swift in Sources */,
@@ -384,7 +418,9 @@
 				844697B629C68597004EF8E9 /* Weather.swift in Sources */,
 				8446979C29C67A56004EF8E9 /* AppDelegate.swift in Sources */,
 				844697B829C687E9004EF8E9 /* WeatherResponse.swift in Sources */,
+				84B2379229C85E90006F3E17 /* GetCityWeatherUsecaseContract.swift in Sources */,
 				846104C129C7AA0200CE1AEF /* ApiClient.swift in Sources */,
+				84B2379829C86AAC006F3E17 /* GetCityWeatherUsecaseProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

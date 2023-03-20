@@ -9,5 +9,5 @@ import Foundation
 
 struct WeatherResponse: Decodable {
     // MARK: - properties.
-    let main: Weather
+    let main: Weather?
 }
