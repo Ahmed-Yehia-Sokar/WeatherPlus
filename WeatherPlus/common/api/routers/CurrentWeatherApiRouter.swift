@@ -1,5 +1,5 @@
 //
-//  CityWeatherApiRouter.swift
+//  CurrentWeatherApiRouter.swift
 //  WeatherPlus
 //
 //  Created by admin on 19/03/2023.
@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-enum CityWeatherApiRouter: ApiRouterContract {
+enum CurrentWeatherApiRouter: ApiRouterContract {
     case getWeatherByCityName(cityName: String)
     
     var headers: HTTPHeaders? {
@@ -37,7 +37,7 @@ enum CityWeatherApiRouter: ApiRouterContract {
     }
 }
 
-extension CityWeatherApiRouter {
+extension CurrentWeatherApiRouter {
     private func getWeatherByCityNameParameters(cityName: String) -> Parameters? {
         var parameters = ApiConstants.defaultParameters
         parameters["q"] = cityName
