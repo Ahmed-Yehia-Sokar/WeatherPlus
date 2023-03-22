@@ -10,5 +10,5 @@ import Combine
 
 protocol CurrentWeatherServicesContract {
     func getCityWeather(byCityName cityName: String,
-                        temperatureUnit: String) -> Future<WeatherResponse, Error>
+                        temperatureUnit: String) -> Future<WeatherResponse, ApiException>
 }

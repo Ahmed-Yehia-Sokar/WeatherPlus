@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol GetCityWeatherUsecaseContract {
-    func getCityWeather(byCityName cityName: String) -> Future<WeatherResponse, Error>
+    func getCityWeather(byCityName cityName: String) -> Future<WeatherResponse, ApiException>
 }
