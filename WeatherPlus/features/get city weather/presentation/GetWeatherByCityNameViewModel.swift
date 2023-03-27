@@ -10,8 +10,8 @@ import Combine
 
 class GetWeatherByCityNameViewModel {
     // MARK: - properties.
-    @Published var temperature: String = ""
-    @Published var humidity: String = ""
+    let temperature = CurrentValueSubject<String, Never>("")
+    let humidity = CurrentValueSubject<String, Never>("")
     private var disposableBag = Set<AnyCancellable>()
     private let getCityWeatherUsecase: GetCityWeatherUsecaseContract
     
@@ -26,8 +26,7 @@ class GetWeatherByCityNameViewModel {
             .sink { completion in
                 print(completion)
             } receiveValue: { weatherResponse in
-                self.temperature = "\(weatherResponse.main?.temp ?? -1)"
-                print("\(self.temperature)")
+                self.temperature.value = "\(weatherResponse.main?.temp ?? 0.0)"
             }
             .store(in: &disposableBag)
 
