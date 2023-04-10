@@ -11,7 +11,8 @@ import Combine
 class GetWeatherByCityNameViewModel {
     // MARK: - properties.
     let temperature = CurrentValueSubject<String, Never>("")
-    let humidity = CurrentValueSubject<String, Never>("")
+    let error = CurrentValueSubject<Error?, Never>(nil)
+    @Published var cityNameSearchQuery: String?
     private var disposableBag = Set<AnyCancellable>()
     private let getCityWeatherUsecase: GetCityWeatherUsecaseContract
     
@@ -20,13 +21,26 @@ class GetWeatherByCityNameViewModel {
         self.getCityWeatherUsecase = getCityWeatherUsecase
     }
     
-    func getCityWeather(byCityName cityName: String) {
+    func getCityWeather(byCityName cityName: String?) {
+        guard let cityName = cityName, !cityName.isEmpty else {
+            temperature.send("Please enter a city name")
+            return
+        }
+        guard let encodedCityName = cityName.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            temperature.send("Invalid city name")
+            return
+        }
         getCityWeatherUsecase
-            .getCityWeather(byCityName: cityName)
-            .sink { completion in
-                print(completion)
-            } receiveValue: { weatherResponse in
-                self.temperature.value = "\(weatherResponse.main?.temp ?? 0.0)"
+            .getCityWeather(byCityName: encodedCityName)
+            .sink { [weak self] completion in
+                switch completion {
+                case .finished:
+                    print(completion)
+                case .failure(let error):
+                    self?.error.send(error)
+                }
+            } receiveValue: { [weak self] weatherResponse in
+                self?.temperature.send("\(weatherResponse.main?.temp ?? 0.0) ℉")
             }
             .store(in: &disposableBag)
 
